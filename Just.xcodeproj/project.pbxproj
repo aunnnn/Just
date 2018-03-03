@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		30A736C7204AE10100302823 /* Just.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A736C5204AE10100302823 /* Just.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30A736CE204AE11100302823 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736CD204AE11100302823 /* Just.swift */; };
+		30A736DE204AF15000302823 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736DD204AF15000302823 /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30A736C2204AE10100302823 /* Just.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A736C5204AE10100302823 /* Just.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Just.h; sourceTree = "<group>"; };
 		30A736C6204AE10100302823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30A736CD204AE11100302823 /* Just.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
+		30A736DD204AF15000302823 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 			children = (
 				30A736C5204AE10100302823 /* Just.h */,
 				30A736C6204AE10100302823 /* Info.plist */,
+				30A736CD204AE11100302823 /* Just.swift */,
+				30A736DD204AF15000302823 /* Request.swift */,
 			);
 			path = Just;
 			sourceTree = "<group>";
@@ -95,6 +101,7 @@
 				TargetAttributes = {
 					30A736C1204AE10000302823 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +138,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A736CE204AE11100302823 /* Just.swift in Sources */,
+				30A736DE204AF15000302823 /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +262,7 @@
 		30A736CB204AE10100302823 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -266,6 +276,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aunwirawit.Just;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -274,6 +285,7 @@
 		30A736CC204AE10100302823 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
