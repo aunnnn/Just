@@ -2,10 +2,10 @@
 A URLSession wrapper just for GET and POST of JSON.
 
 ## Features
-- [x] Under 150 lines of code
+- [x] Under 150 lines of code.
 - [x] GET
 - [x] POST
-- [x] Decode JSON to `T` using `Codable`
+- [x] Decode JSON to `T` using the new `Codable` ✨
 
 ## Installation
 ### Cocoapods
