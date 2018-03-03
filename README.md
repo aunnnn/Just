@@ -1,7 +1,8 @@
 # Just
-A URLSession wrapper that does just GET and POST of JSON.
+A URLSession wrapper just for GET and POST of JSON.
 
 ## Features
+- [x] Under 150 lines of code
 - [x] GET
 - [x] POST
 - [x] Decode JSON to `T` using `Codable`
