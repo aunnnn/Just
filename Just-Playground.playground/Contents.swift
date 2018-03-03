@@ -42,7 +42,7 @@ let myRepo = "https://api.github.com/users/aunnnn/repos"
 
 // GET Data
 func get() {
-    Just.get(myRepo)?.response { (result) in
+    Just.get("http://www.google.com")?.response { (result) in
         switch result {
         case let .success(data):
             print(data.count)
@@ -78,6 +78,6 @@ func post() {
     })
 }
 
-post()
+get()
 
 PlaygroundPage.current.needsIndefiniteExecution = true

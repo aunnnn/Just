@@ -37,12 +37,10 @@ public struct Request {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
             case .get:
-                let urlWithQueries: URL = {
-                    var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-                    components.queryItems = params.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
-                    components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
-                    return components.url!
-                }()
+                var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+                components.queryItems = params.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+                components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+                let urlWithQueries = components.url!
                 request = URLRequest(url: urlWithQueries)
             }
         }
