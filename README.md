@@ -10,9 +10,11 @@ A URLSession wrapper just for GET and POST of JSON.
 ## Installation
 ### CocoaPods
 ```ruby
-pod 'Just'
+pod 'Just', :git => 'https://github.com/aunnnn/Just.git'
 ```
-*Or just pick the code to your project directly.*
+*Note: `:git => 'https://github.com/aunnnn/Just.git'` is to prevent clashing names with other pods.*
+### Manual
+Pick the code to your project.
 
 ## Requirements
 iOS 8+, OSX 10.10+, Swift 4
