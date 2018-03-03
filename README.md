@@ -61,7 +61,7 @@ Just.request(url, method: .get)
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil) -> Request
 ```
 
-### A suggested way to work with APIs
+## A suggested way to work with APIs
 Make the base protocol for API service that you can build Just.Request from: 
 ```swift
 import Just
