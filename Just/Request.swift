@@ -19,16 +19,16 @@ public enum Result<T> {
 /// A URLRequest wrapper
 public struct Request {
     
-    let url: URL
+    public let url: URL
     
-    let method: HTTPMethod
+    public let method: HTTPMethod
     
     /// In case of `GET`, it's a query in url. In case of `POST`, it's a JSON body.
-    let parameters: Parameters?
+    public let parameters: Parameters?
     
-    let headers: HTTPHeaders?
+    public let headers: HTTPHeaders?
     
-    func asURLRequest() -> URLRequest {
+    public func asURLRequest() -> URLRequest {
         var request = URLRequest(url: url)
         if let params = parameters {
             switch method {
@@ -70,7 +70,7 @@ public struct Request {
     }
     
     /// Make the request immediately and return result on the main thread.
-    func response(_ completion: @escaping (Result<Data>) -> Void) {
+    public func response(_ completion: @escaping (Result<Data>) -> Void) {
         self._response { (result) in
             DispatchQueue.main.async {
                 completion(result)
@@ -79,7 +79,7 @@ public struct Request {
     }
     
     /// Make the request immediately, decode the model from JSON, and return result on the main thread.
-    func responseObject<T: Decodable>(_ completion: @escaping (Result<T>) -> Void) {
+    public func responseObject<T: Decodable>(_ completion: @escaping (Result<T>) -> Void) {
         self._response { (result) in
             switch result {
             case .success(let data):
