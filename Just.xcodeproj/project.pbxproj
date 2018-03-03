@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		307F2E05204B1BBE00A2C3A3 /* Just_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 307F2E03204B1BBE00A2C3A3 /* Just_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		307F2E0B204B1BD900A2C3A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307F2E0A204B1BD900A2C3A3 /* Foundation.framework */; };
+		307F2E0D204B1BE000A2C3A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307F2E0C204B1BE000A2C3A3 /* Foundation.framework */; };
 		30A736C7204AE10100302823 /* Just.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A736C5204AE10100302823 /* Just.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30A736CE204AE11100302823 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736CD204AE11100302823 /* Just.swift */; };
 		30A736DE204AF15000302823 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736DD204AF15000302823 /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		307F2E01204B1BBE00A2C3A3 /* Just.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		307F2E03204B1BBE00A2C3A3 /* Just_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Just_macOS.h; sourceTree = "<group>"; };
+		307F2E04204B1BBE00A2C3A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		307F2E0A204B1BD900A2C3A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		307F2E0C204B1BE000A2C3A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		30A736C2204AE10100302823 /* Just.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A736C5204AE10100302823 /* Just.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Just.h; sourceTree = "<group>"; };
 		30A736C6204AE10100302823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -21,21 +29,50 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		307F2DFD204B1BBE00A2C3A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				307F2E0B204B1BD900A2C3A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30A736BE204AE10000302823 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307F2E0D204B1BE000A2C3A3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		307F2E02204B1BBE00A2C3A3 /* Just-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				307F2E03204B1BBE00A2C3A3 /* Just_macOS.h */,
+				307F2E04204B1BBE00A2C3A3 /* Info.plist */,
+			);
+			path = "Just-macOS";
+			sourceTree = "<group>";
+		};
+		307F2E09204B1BD900A2C3A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				307F2E0C204B1BE000A2C3A3 /* Foundation.framework */,
+				307F2E0A204B1BD900A2C3A3 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		30A736B8204AE10000302823 = {
 			isa = PBXGroup;
 			children = (
 				30A736C4204AE10100302823 /* Just */,
+				307F2E02204B1BBE00A2C3A3 /* Just-macOS */,
 				30A736C3204AE10100302823 /* Products */,
+				307F2E09204B1BD900A2C3A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -43,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				30A736C2204AE10100302823 /* Just.framework */,
+				307F2E01204B1BBE00A2C3A3 /* Just.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +99,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		307F2DFE204B1BBE00A2C3A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				307F2E05204B1BBE00A2C3A3 /* Just_macOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30A736BF204AE10000302823 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,6 +118,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		307F2E00204B1BBE00A2C3A3 /* Just-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 307F2E06204B1BBE00A2C3A3 /* Build configuration list for PBXNativeTarget "Just-macOS" */;
+			buildPhases = (
+				307F2DFC204B1BBE00A2C3A3 /* Sources */,
+				307F2DFD204B1BBE00A2C3A3 /* Frameworks */,
+				307F2DFE204B1BBE00A2C3A3 /* Headers */,
+				307F2DFF204B1BBE00A2C3A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Just-macOS";
+			productName = "Just-macOS";
+			productReference = 307F2E01204B1BBE00A2C3A3 /* Just.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		30A736C1204AE10000302823 /* Just */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30A736CA204AE10100302823 /* Build configuration list for PBXNativeTarget "Just" */;
@@ -99,6 +163,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Wirawit Rueopas";
 				TargetAttributes = {
+					307F2E00204B1BBE00A2C3A3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					30A736C1204AE10000302823 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
@@ -119,11 +187,19 @@
 			projectRoot = "";
 			targets = (
 				30A736C1204AE10000302823 /* Just */,
+				307F2E00204B1BBE00A2C3A3 /* Just-macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		307F2DFF204B1BBE00A2C3A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30A736C0204AE10000302823 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,6 +210,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		307F2DFC204B1BBE00A2C3A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30A736BD204AE10000302823 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,6 +229,54 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		307F2E07204B1BBE00A2C3A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C4JRFH5FHP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Just-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aunwirawit.Just-macOS";
+				PRODUCT_NAME = Just;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		307F2E08204B1BBE00A2C3A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = C4JRFH5FHP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Just-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aunwirawit.Just-macOS";
+				PRODUCT_NAME = Just;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		30A736C8204AE10100302823 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -272,6 +403,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Just/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aunwirawit.Just;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -295,6 +427,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Just/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aunwirawit.Just;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -307,6 +440,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		307F2E06204B1BBE00A2C3A3 /* Build configuration list for PBXNativeTarget "Just-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				307F2E07204B1BBE00A2C3A3 /* Debug */,
+				307F2E08204B1BBE00A2C3A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		30A736BC204AE10000302823 /* Build configuration list for PBXProject "Just" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
