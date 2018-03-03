@@ -3,8 +3,6 @@
 import PlaygroundSupport
 import Just
 
-let myRepo = "https://api.github.com/users/aunnnn/repos"
-
 struct Repo: Codable {
     
     enum CodingKeys: String, CodingKey {
@@ -40,6 +38,8 @@ struct Owner: Codable {
     let isSiteAdmin: Bool
 }
 
+let myRepo = "https://api.github.com/users/aunnnn/repos"
+
 // GET Data
 func get() {
     Just.get(myRepo)?.response { (result) in
@@ -66,6 +66,18 @@ func getModel() {
     })
 }
 
-getModel()
+func post() {
+    let url = "http://mockbin.com/request"
+    Just.post(url, jsonBody: ["foo": "bar"])?.response({ (res) in
+        switch res {
+        case .success(let data):
+            print(data.count)
+        case .error(let error):
+            print(error)
+        }
+    })
+}
+
+post()
 
 PlaygroundPage.current.needsIndefiniteExecution = true
