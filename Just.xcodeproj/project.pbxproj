@@ -10,6 +10,8 @@
 		307F2E05204B1BBE00A2C3A3 /* Just_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 307F2E03204B1BBE00A2C3A3 /* Just_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		307F2E0B204B1BD900A2C3A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307F2E0A204B1BD900A2C3A3 /* Foundation.framework */; };
 		307F2E0D204B1BE000A2C3A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307F2E0C204B1BE000A2C3A3 /* Foundation.framework */; };
+		307F2E0E204B1E9000A2C3A3 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736CD204AE11100302823 /* Just.swift */; };
+		307F2E0F204B1E9000A2C3A3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736DD204AF15000302823 /* Request.swift */; };
 		30A736C7204AE10100302823 /* Just.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A736C5204AE10100302823 /* Just.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30A736CE204AE11100302823 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736CD204AE11100302823 /* Just.swift */; };
 		30A736DE204AF15000302823 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736DD204AF15000302823 /* Request.swift */; };
@@ -214,6 +216,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307F2E0E204B1E9000A2C3A3 /* Just.swift in Sources */,
+				307F2E0F204B1E9000A2C3A3 /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +248,7 @@
 				INFOPLIST_FILE = "Just-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aunwirawit.Just-macOS";
 				PRODUCT_NAME = Just;
 				SDKROOT = macosx;
@@ -268,7 +272,7 @@
 				INFOPLIST_FILE = "Just-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aunwirawit.Just-macOS";
 				PRODUCT_NAME = Just;
 				SDKROOT = macosx;
