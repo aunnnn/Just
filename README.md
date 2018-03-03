@@ -70,6 +70,5 @@ Pull requests are welcomed!
 
 *Note: I'm doing `RequestType` protocol, so you can control how you create URLRequest, which'll give us a litle more control.*
 
-### Is this related to JustHTTP?
-[JustHTTP](https://github.com/JustHTTP/Just)
-No. Actually, I found out there's a library with the same name that does almost the same thing the moment I finish coding this! Checking the docs and you will notice quickly that our goals are very different.
+### Is this related to [JustHTTP](https://github.com/JustHTTP/Just)?
+Totally unrelated. Actually, I found out there's a library with the same name that does almost the same thing the moment I finish coding this! Checking the docs and you will notice quickly that our goals are very different.
