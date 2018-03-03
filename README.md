@@ -61,6 +61,59 @@ Just.request(url, method: .get)
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil) -> Request
 ```
 
+### A suggested way to work with APIs
+Make the base protocol for API service that you can build Just.Request from: 
+```swift
+import Just
+
+public protocol APIService {
+    var baseURL: URL { get }
+    var method: HTTPMethod  { get }
+    var path: String { get }
+    var parameters: [String: Any]? { get }
+    var headers: [String: String]? { get }
+}
+
+extension APIService {
+    var request: Request {
+        let url = baseURL.appendingPathComponent(path)
+        return Just.request(url, method: method, parameters: parameters, headers: headers)
+    }
+}
+```
+Then make an enum for each service in your app that conforms to `APIService`, e.g.,:
+```swift
+enum GithubAPI: APIService {
+    case getUser(...)
+    case getRepos(...)
+    case deleteRepo(...)
+    
+    var baseURL: URL {
+        return URL(string: "https://api.github.com")!
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .getUser, .getRepo: 
+            return .get
+        case .deleteRepo: 
+            return .post
+        }
+    
+    ...you get the idea
+}
+```
+
+Now it's easy to call API:
+```swift
+GithubAPI.getUser(...).request.responseObject{  (result: Result<[User]>) in
+   switch result {
+   case .success(let users): print(users)
+   case .error(let error): print(error)
+   }
+}
+```
+
 ## Contribution
 Pull requests are welcomed!
 
