@@ -12,7 +12,7 @@
 		307F2E0D204B1BE000A2C3A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307F2E0C204B1BE000A2C3A3 /* Foundation.framework */; };
 		307F2E0E204B1E9000A2C3A3 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736CD204AE11100302823 /* Just.swift */; };
 		307F2E0F204B1E9000A2C3A3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736DD204AF15000302823 /* Request.swift */; };
-		30A736C7204AE10100302823 /* Just.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A736C5204AE10100302823 /* Just.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30A736C7204AE10100302823 /* Just_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A736C5204AE10100302823 /* Just_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30A736CE204AE11100302823 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736CD204AE11100302823 /* Just.swift */; };
 		30A736DE204AF15000302823 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A736DD204AF15000302823 /* Request.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +25,7 @@
 		307F2E0C204B1BE000A2C3A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		307F2E10204B22FE00A2C3A3 /* Just-Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Just-Playground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		30A736C2204AE10100302823 /* Just_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Just_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		30A736C5204AE10100302823 /* Just.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Just.h; sourceTree = "<group>"; };
+		30A736C5204AE10100302823 /* Just_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Just_iOS.h; sourceTree = "<group>"; };
 		30A736C6204AE10100302823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A736CD204AE11100302823 /* Just.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 		30A736DD204AF15000302823 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		30A736C4204AE10100302823 /* Just-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				30A736C5204AE10100302823 /* Just.h */,
+				30A736C5204AE10100302823 /* Just_iOS.h */,
 				30A736C6204AE10100302823 /* Info.plist */,
 			);
 			path = "Just-iOS";
@@ -123,7 +123,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A736C7204AE10100302823 /* Just.h in Headers */,
+				30A736C7204AE10100302823 /* Just_iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +418,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Just/Info.plist;
+				INFOPLIST_FILE = "Just-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -442,7 +442,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Just/Info.plist;
+				INFOPLIST_FILE = "Just-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
