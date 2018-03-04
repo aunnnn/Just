@@ -78,6 +78,14 @@ func post() {
     }
 }
 
+func configuration() {
+    Just.get(myRepo, configurationBlock: { (request: URLRequest) -> URLRequest in
+        var newReq = request
+        newReq.cachePolicy = .returnCacheDataElseLoad
+        return newReq
+    })
+}
+
 get()
 
 PlaygroundPage.current.needsIndefiniteExecution = true
