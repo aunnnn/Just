@@ -1,4 +1,8 @@
 # Just
+[![Version](https://img.shields.io/cocoapods/v/JustRequest.svg?style=flat)](http://cocoapods.org/pods/JustRequest)
+[![License](https://img.shields.io/cocoapods/l/JustRequest.svg?style=flat)](http://cocoapods.org/pods/JustRequest)
+[![Platform](https://img.shields.io/cocoapods/p/JustRequest.svg?style=flat)](http://cocoapods.org/pods/JustRequest)
+
 A URLSession wrapper just for GET and POST of JSON.
 
 ## Features
