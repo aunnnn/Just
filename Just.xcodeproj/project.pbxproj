@@ -24,7 +24,7 @@
 		307F2E0A204B1BD900A2C3A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		307F2E0C204B1BE000A2C3A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		307F2E10204B22FE00A2C3A3 /* Just-Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Just-Playground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		30A736C2204AE10100302823 /* Just.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Just.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A736C2204AE10100302823 /* Just_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Just_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A736C5204AE10100302823 /* Just.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Just.h; sourceTree = "<group>"; };
 		30A736C6204AE10100302823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30A736CD204AE11100302823 /* Just.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		30A736C3204AE10100302823 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				30A736C2204AE10100302823 /* Just.framework */,
+				30A736C2204AE10100302823 /* Just_iOS.framework */,
 				307F2E01204B1BBE00A2C3A3 /* Just.framework */,
 			);
 			name = Products;
@@ -148,9 +148,9 @@
 			productReference = 307F2E01204B1BBE00A2C3A3 /* Just.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		30A736C1204AE10000302823 /* Just */ = {
+		30A736C1204AE10000302823 /* Just-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30A736CA204AE10100302823 /* Build configuration list for PBXNativeTarget "Just" */;
+			buildConfigurationList = 30A736CA204AE10100302823 /* Build configuration list for PBXNativeTarget "Just-iOS" */;
 			buildPhases = (
 				30A736BD204AE10000302823 /* Sources */,
 				30A736BE204AE10000302823 /* Frameworks */,
@@ -161,9 +161,9 @@
 			);
 			dependencies = (
 			);
-			name = Just;
+			name = "Just-iOS";
 			productName = Just;
-			productReference = 30A736C2204AE10100302823 /* Just.framework */;
+			productReference = 30A736C2204AE10100302823 /* Just_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -172,6 +172,9 @@
 		30A736B9204AE10000302823 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Wirawit Rueopas";
 				TargetAttributes = {
@@ -198,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				30A736C1204AE10000302823 /* Just */,
+				30A736C1204AE10000302823 /* Just-iOS */,
 				307F2E00204B1BBE00A2C3A3 /* Just-macOS */,
 			);
 		};
@@ -472,7 +475,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		30A736CA204AE10100302823 /* Build configuration list for PBXNativeTarget "Just" */ = {
+		30A736CA204AE10100302823 /* Build configuration list for PBXNativeTarget "Just-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				30A736CB204AE10100302823 /* Debug */,
