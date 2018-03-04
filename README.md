@@ -34,31 +34,41 @@ Just.get("https://api.github.com/users/aunnnn/repos")?.response { (result) in
 
 If you also want to convert response to JSON:
 ```swift
-Just.get("https://api.github.com/users/aunnnn/repos")?.responseObject({ (result: Result<[Repo]>) in
+Just.get("https://api.github.com/users/aunnnn/repos")?.responseObject { (result: Result<[Repo]>) in
     switch result {
     case let .success(repos):
         print(repos)
     case let .error(error):
         print(error)
     }
-})
+}
 ```
 
 **Now you get the pattern.**
 
 ### 2. POST
 ```swift
-Just.post(url, jsonBody: ["foo": "bar"])
-```
-### 3. Either GET or POST
-Just use `method`:
-```swift
-Just.request(url, method: .get)
+Just.post("your url string", jsonBody: ["foo": "bar"])
 ```
 
-### Full interface 
+### 3. Either GET or POST
 ```swift
-public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil) -> Request
+Just.request(url, method: .post, jsonBody: ["foo": "bar"])
+```
+
+#### Full interface:
+```swift
+public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
+```
+
+### 4. Configure the default URLRequest
+Provide URLRequest configuration block:
+```swift
+Just.get("https://api.github.com/users/aunnnn/repos", configurationBlock: { (request: URLRequest) -> URLRequest in
+    var newReq = request
+    newReq.cachePolicy = .returnCacheDataElseLoad
+    return newReq
+})
 ```
 
 ## A suggested way to work with APIs
