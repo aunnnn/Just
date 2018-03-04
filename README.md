@@ -2,7 +2,7 @@
 A URLSession wrapper just for GET and POST of JSON.
 
 ## Features
-- [x] Under 150 lines of code.
+- [x] ~100 lines of code.
 - [x] GET
 - [x] POST
 - [x] Decode JSON to `T` using the new `Codable` ✨
@@ -10,9 +10,9 @@ A URLSession wrapper just for GET and POST of JSON.
 ## Installation
 ### CocoaPods
 ```ruby
-pod 'Just', :git => 'https://github.com/aunnnn/Just.git'
+pod 'JustRequest'
 ```
-*Note: `:git => 'https://github.com/aunnnn/Just.git'` is to prevent clashing names with other pods.*
+
 ### Manual
 Pick the code to your project.
 
