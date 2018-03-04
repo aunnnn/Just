@@ -10,9 +10,11 @@ A URLSession wrapper just for GET and POST of JSON.
 ## Installation
 ### CocoaPods
 ```ruby
-pod 'Just'
+pod 'Just', :git => 'https://github.com/aunnnn/Just.git'
 ```
-*Or just pick the code to your project directly.*
+*Note: `:git => 'https://github.com/aunnnn/Just.git'` is to prevent clashing names with other pods.*
+### Manual
+Pick the code to your project.
 
 ## Requirements
 iOS 8+, OSX 10.10+, Swift 4
@@ -59,6 +61,59 @@ Just.request(url, method: .get)
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil) -> Request
 ```
 
+## A suggested way to work with APIs
+Make the base protocol for API service that you can build Just.Request from: 
+```swift
+import Just
+
+public protocol APIService {
+    var baseURL: URL { get }
+    var method: HTTPMethod  { get }
+    var path: String { get }
+    var parameters: [String: Any]? { get }
+    var headers: [String: String]? { get }
+}
+
+extension APIService {
+    var request: Request {
+        let url = baseURL.appendingPathComponent(path)
+        return Just.request(url, method: method, parameters: parameters, headers: headers)
+    }
+}
+```
+Then make an enum for each service in your app that conforms to `APIService`, e.g.,:
+```swift
+enum GithubAPI: APIService {
+    case getUser(...)
+    case getRepos(...)
+    case deleteRepo(...)
+    
+    var baseURL: URL {
+        return URL(string: "https://api.github.com")!
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .getUser, .getRepo: 
+            return .get
+        case .deleteRepo: 
+            return .post
+        }
+    
+    ...you get the idea
+}
+```
+
+Now it's easy to call API:
+```swift
+GithubAPI.getUser(...).request.responseObject{  (result: Result<[User]>) in
+   switch result {
+   case .success(let users): print(users)
+   case .error(let error): print(error)
+   }
+}
+```
+
 ## Contribution
 Pull requests are welcomed!
 
@@ -68,6 +123,5 @@ Pull requests are welcomed!
 
 *Note: I'm doing `RequestType` protocol, so you can control how you create URLRequest, which'll give us a litle more control.*
 
-### Is this related to JustHTTP?
-[JustHTTP](https://github.com/JustHTTP/Just)
-No. Actually, I found out there's a library with the same name that does almost the same thing the moment I finish coding this! Checking the docs and you will notice quickly that our goals are very different.
+### Is this related to [JustHTTP](https://github.com/JustHTTP/Just)?
+Totally unrelated. Actually, I found them out the moment I finish coding this. A library with the same name doing almost the same thing! Still, checking the docs and you will notice quickly that our goals are very different.
