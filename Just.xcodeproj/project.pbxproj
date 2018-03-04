@@ -72,8 +72,9 @@
 		30A736B8204AE10000302823 = {
 			isa = PBXGroup;
 			children = (
+				30BDD183204BE5A0006055DD /* Source */,
 				307F2E10204B22FE00A2C3A3 /* Just-Playground.playground */,
-				30A736C4204AE10100302823 /* Just */,
+				30A736C4204AE10100302823 /* Just-iOS */,
 				307F2E02204B1BBE00A2C3A3 /* Just-macOS */,
 				30A736C3204AE10100302823 /* Products */,
 				307F2E09204B1BD900A2C3A3 /* Frameworks */,
@@ -89,15 +90,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		30A736C4204AE10100302823 /* Just */ = {
+		30A736C4204AE10100302823 /* Just-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				30A736C5204AE10100302823 /* Just.h */,
 				30A736C6204AE10100302823 /* Info.plist */,
+			);
+			path = "Just-iOS";
+			sourceTree = "<group>";
+		};
+		30BDD183204BE5A0006055DD /* Source */ = {
+			isa = PBXGroup;
+			children = (
 				30A736CD204AE11100302823 /* Just.swift */,
 				30A736DD204AF15000302823 /* Request.swift */,
 			);
-			path = Just;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
