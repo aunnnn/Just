@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
     s.summary = "A URLSession wrapper just for GET and POST"
     s.requires_arc = true
 
-    s.version = "0.1.0"
+    s.version = "0.2.0"
     s.license = 'MIT'
     s.author = { "Wirawit" => "aun.wirawit@gmail.com" }
     s.homepage = "https://github.com/aunnnn/Just"
