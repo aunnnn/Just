@@ -1,9 +1,7 @@
-
-import Foundation
-
 /// Queries (GET) or JSON Body (POST)
 public typealias Parameters = [String: Any]
 public typealias HTTPHeaders = [String: String]
+public typealias URLRequestConfigurationBlock = (URLRequest) -> URLRequest
 
 /// Only GET or POST
 public enum HTTPMethod: String {
@@ -28,6 +26,9 @@ public struct Request {
     
     public let headers: HTTPHeaders?
     
+    /// A configuration block for generated URLRequest. You can modify the request or return different one completely.
+    public var configurationBlock: URLRequestConfigurationBlock?
+    
     public func asURLRequest() -> URLRequest {
         var request = URLRequest(url: url)
         if let params = parameters {
@@ -46,7 +47,11 @@ public struct Request {
         }
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
-        return request
+        if let configured = configurationBlock {
+            return configured(request)
+        } else {
+            return request
+        }
     }
     
     private func _response(_ completion: @escaping (Result<Data>) -> Void) {

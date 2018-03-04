@@ -68,14 +68,14 @@ func getModel() {
 
 func post() {
     let url = "http://mockbin.com/request"
-    Just.post(url, jsonBody: ["foo": "bar"])?.response({ (res) in
+    Just.post(url, jsonBody: ["foo": "bar"])?.response { (res) in
         switch res {
         case .success(let data):
             print(data.count)
         case .error(let error):
             print(error)
         }
-    })
+    }
 }
 
 get()
