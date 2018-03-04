@@ -131,7 +131,5 @@ Pull requests are welcomed!
 ### Is this for me?
 `Just` is very limited. If you need a finer-grain control over how to make request, cache policy, etc., you should just use other libraries. Also, check the code (common, just 150 lines) if it's what you need.
 
-*Note: I'm doing `RequestType` protocol, so you can control how you create URLRequest, which'll give us a litle more control.*
-
 ### Is this related to [JustHTTP](https://github.com/JustHTTP/Just)?
 Totally unrelated. Actually, I found them out the moment I finish coding this. A library with the same name doing almost the same thing! Still, checking the docs and you will notice quickly that our goals are very different.
