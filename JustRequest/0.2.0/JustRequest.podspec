@@ -1,7 +1,6 @@
 Pod::Spec.new do |s|
 
-    s.ios.deployment_target = '8.0'
-    s.osx.deployment_target = '10.10'
+    s.platforms = { :ios => "8.0", :osx => "10.10" }
 
     s.name = "JustRequest"
     s.summary = "A URLSession wrapper just for GET and POST"
