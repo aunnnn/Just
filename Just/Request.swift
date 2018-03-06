@@ -55,12 +55,12 @@ public struct Request {
             case .post(let encoding):
                 switch encoding {
                 case .json:
-                    request.httpBody = params.map { (tuple) -> String in
-                        return "\(tuple.key)=\(self.percentEscapeString(string: "\(tuple.value)"))"
-                    }.joined(separator: "&").data(using: .utf8, allowLossyConversion: true)
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: params)
                     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 case .url:
-                    
+                    request.httpBody = params.map { (tuple) -> String in
+                        return "\(tuple.key)=\(self.percentEscapeString(string: "\(tuple.value)"))"
+                        }.joined(separator: "&").data(using: .utf8, allowLossyConversion: true)
                     request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 }
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
