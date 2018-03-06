@@ -3,13 +3,13 @@
 [![License](https://img.shields.io/cocoapods/l/JustRequest.svg?style=flat)](http://cocoapods.org/pods/JustRequest)
 [![Platform](https://img.shields.io/cocoapods/p/JustRequest.svg?style=flat)](http://cocoapods.org/pods/JustRequest)
 
-A URLSession wrapper just for GET and POST of JSON.
+A lightweight URLSession wrapper just for GET and POST.
 
 ## Features
-- [x] ~100 lines of code.
+- [x] < 150 lines of code.
 - [x] GET
-- [x] POST
-- [x] Decode JSON to `T` using the new `Codable` ✨
+- [x] POST (json or urlencoded)
+- [x] Decode JSON response to `T` using the new `Codable` ✨
 
 ## Installation
 ### CocoaPods
@@ -52,8 +52,9 @@ Just.get("https://api.github.com/users/aunnnn/repos")?.responseObject { (result:
 **Now you get the pattern.**
 
 ### 2. POST
+`encoding` is either `.url` or `.json`:
 ```swift
-Just.post("your url string", jsonBody: ["foo": "bar"])
+Just.post("your url string", body: ["foo": "bar"], encoding: .url)
 ```
 
 ### 3. Full Interface
