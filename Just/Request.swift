@@ -1,12 +1,24 @@
-/// Queries (GET) or JSON Body (POST)
 public typealias Parameters = [String: Any]
 public typealias HTTPHeaders = [String: String]
 public typealias URLRequestConfigurationBlock = (URLRequest) -> URLRequest
 
+public enum POSTBodyEncoding {
+    case json
+    case url
+}
+
 /// Only GET or POST
-public enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
+public enum HTTPMethod {
+    
+    case get
+    case post(POSTBodyEncoding)
+    
+    public var string: String {
+        switch self {
+        case .get: return "GET"
+        case .post: return "POST"
+        }
+    }
 }
 
 public enum Result<T> {
@@ -21,7 +33,6 @@ public struct Request {
     
     public let method: HTTPMethod
     
-    /// In case of `GET`, it's a query in url. In case of `POST`, it's a JSON body.
     public let parameters: Parameters?
     
     public let headers: HTTPHeaders?
@@ -29,13 +40,29 @@ public struct Request {
     /// A configuration block for generated URLRequest. You can modify the request or return different one completely.
     public var configurationBlock: URLRequestConfigurationBlock?
     
+    private func percentEscapeString(string: String) -> String {
+        var characterSet = CharacterSet.alphanumerics
+        characterSet.insert(charactersIn: "-._* ")
+        return string
+            .addingPercentEncoding(withAllowedCharacters: characterSet)!
+            .replacingOccurrences(of: " ", with: "+", options: [], range: nil)
+    }
+    
     public func asURLRequest() -> URLRequest {
         var request = URLRequest(url: url)
         if let params = parameters {
             switch method {
-            case .post:
-                request.httpBody = try? JSONSerialization.data(withJSONObject: params)
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            case .post(let encoding):
+                switch encoding {
+                case .json:
+                    request.httpBody = params.map { (tuple) -> String in
+                        return "\(tuple.key)=\(self.percentEscapeString(string: "\(tuple.value)"))"
+                    }.joined(separator: "&").data(using: .utf8, allowLossyConversion: true)
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                case .url:
+                    
+                    request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                }
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
             case .get:
                 var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
@@ -45,7 +72,7 @@ public struct Request {
                 request = URLRequest(url: urlWithQueries)
             }
         }
-        request.httpMethod = method.rawValue
+        request.httpMethod = method.string
         request.allHTTPHeaderFields = headers
         if let configured = configurationBlock {
             return configured(request)
