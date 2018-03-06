@@ -24,6 +24,7 @@ Pick the code to your project.
 iOS 8+, OSX 10.10+, Swift 4
 
 ## Usage
+`Just` provides only 3 interfaces for you:
 ### 1. GET
 ```swift
 Just.get("https://api.github.com/users/aunnnn/repos")?.response { (result) in
@@ -55,17 +56,12 @@ Just.get("https://api.github.com/users/aunnnn/repos")?.responseObject { (result:
 Just.post("your url string", jsonBody: ["foo": "bar"])
 ```
 
-### 3. Either GET or POST
-```swift
-Just.request(url, method: .post, jsonBody: ["foo": "bar"])
-```
-
-#### Full interface:
+### 3. Full Interface
 ```swift
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
 ```
 
-### 4. Configure the default URLRequest
+### To configure the default URLRequest
 Provide URLRequest configuration block:
 ```swift
 Just.get("https://api.github.com/users/aunnnn/repos", configurationBlock: { (request: URLRequest) -> URLRequest in
@@ -76,7 +72,9 @@ Just.get("https://api.github.com/users/aunnnn/repos", configurationBlock: { (req
 ```
 
 ## A suggested way to work with APIs
-Make the base protocol for API service that you can build Just.Request from: 
+You can use `Just.get` or `Just.post`, but the recommended way is to wrap an API with enum and use `Just.request.`
+
+First, make a base protocol for API service: 
 ```swift
 import Just
 
@@ -89,16 +87,18 @@ public protocol APIService {
 }
 
 extension APIService {
+
+    /// Build `Request` for corresponding API.
     var request: Request {
         let url = baseURL.appendingPathComponent(path)
         return Just.request(url, method: method, parameters: parameters, headers: headers)
     }
 }
 ```
-Then make an enum for each service in your app that conforms to `APIService`, e.g.,:
+Then, make an enum for each service in your app that conforms to `APIService`:
 ```swift
 enum GithubAPI: APIService {
-    case getUser(...)
+    case getUser(id: String)
     case getRepos(...)
     case deleteRepo(...)
     
@@ -113,14 +113,17 @@ enum GithubAPI: APIService {
         case .deleteRepo: 
             return .post
         }
+    }
+    
+    var parameters: [String: Any]? { ...
     
     ...you get the idea
 }
 ```
 
-Now it's easy to call API:
+To use:
 ```swift
-GithubAPI.getUser(...).request.responseObject{  (result: Result<[User]>) in
+GithubAPI.getUser(id: "123").request.responseObject{  (result: Result<[User]>) in
    switch result {
    case .success(let users): print(users)
    case .error(let error): print(error)
