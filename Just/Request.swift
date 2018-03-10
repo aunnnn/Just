@@ -86,13 +86,16 @@ public struct Request {
             if let error = error {
                 completion(.error(error))
             } else {
-                if
-                    let data = data,
-                    let response = response as? HTTPURLResponse,
-                    (200 ... 299) ~= response.statusCode {
-                    completion(.success(data))
+                let httpResponse = response as! HTTPURLResponse
+                if (200 ... 299) ~= httpResponse.statusCode {
+                    if let data = data {
+                        completion(.success(data))
+                    } else {
+                        let error = NSError(domain: "com.aunwirawit.Just", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data found."])
+                        completion(.error(error))
+                    }
                 } else {
-                    let error = NSError(domain: "com.aunwirawit.Just", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data found."])
+                    let error = NSError(domain: "com.aunwirawit.Just", code: 0, userInfo: [NSLocalizedDescriptionKey: "Status code: \(httpResponse.statusCode)"])
                     completion(.error(error))
                 }
             }
@@ -124,7 +127,7 @@ public struct Request {
                             let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
                             let pretty = try? JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted),
                             let rawPrettyJSON = String(data: pretty, encoding: .utf8) {
-                            print("[JustRequest] DEBUG: Unable to decode JSON to \(T.self).\n----------\nJSONDecoder's Error: \(error)\n----------\nHere is the raw data:\n----------\n\(rawPrettyJSON)\n==========\n")
+                            print("[JustRequest] DEBUG: Unable to decode JSON to \(T.self).\n----------\nURLRequest: \(self.asURLRequest())\n----------\nJSONDecoder's Error: \(error)\n----------\nHere is the raw data:\n----------\n\(rawPrettyJSON)\n==========\n")
                         } else {
                             print("[JustRequest] DEBUG: Unable to decode JSON to \(T.self), and also unable to convert raw data to dictionary :(")
                         }
