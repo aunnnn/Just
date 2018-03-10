@@ -24,6 +24,7 @@ Just download the code.
 iOS 8+, OSX 10.10+, Swift 4
 
 ## Usage
+Don't forget to `import JustRequest`.
 ### 1. request with `url`
 ```swift
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
