@@ -47,11 +47,11 @@ Just.request("https://api.github.com/users/aunnnn/repos", method: .get, configur
 ```
 
 ## A suggested way to work with APIs
-You can use `Just.get` or `Just.post`, but the recommended way is to wrap an API with enum and use `Just.request.`
+Organize a set of API with enum and use `Just.request`:
 
 First, make a base protocol for API service: 
 ```swift
-import Just
+import JustRequest
 
 public protocol APIService {
     var baseURL: URL { get }
@@ -86,7 +86,7 @@ enum GithubAPI: APIService {
         case .getUser, .getRepo: 
             return .get
         case .deleteRepo: 
-            return .post
+            return .post(.json)
         }
     }
     
@@ -105,6 +105,8 @@ GithubAPI.getUser(id: "123").request.responseObject{  (result: Result<[User]>) i
    }
 }
 ```
+
+*Note: It's important to explicitly specify `result: Result<[User]>` to help the compiler knows the model you are dealing with. With this, you can interact with `users` as `[User]`.*
 
 ## Contribution
 Pull requests are welcomed!
