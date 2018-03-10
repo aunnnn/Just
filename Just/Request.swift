@@ -119,6 +119,16 @@ public struct Request {
                         completion(.success(model))
                     }
                 } catch (let error) {
+                    #if DEBUG
+                        if
+                            let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
+                            let pretty = try? JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted),
+                            let rawPrettyJSON = String(data: pretty, encoding: .utf8) {
+                            print("[JustRequest] DEBUG: Unable to decode JSON to \(T.self).\n----------\nJSONDecoder's Error: \(error)\n----------\nHere is the raw data:\n----------\n\(rawPrettyJSON)\n==========\n")
+                        } else {
+                            print("[JustRequest] DEBUG: Unable to decode JSON to \(T.self), and also unable to convert raw data to dictionary :(")
+                        }
+                    #endif
                     DispatchQueue.main.async {
                     	completion(.error(error))
                     }
