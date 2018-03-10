@@ -40,24 +40,20 @@ struct Owner: Codable {
 
 let myRepo = "https://api.github.com/users/aunnnn/repos"
 
-// GET Data
-func get() {
-    Just.get("http://www.google.com")?.response { (result) in
+func examples() {
+    Just.request(myRepo, method: .get)?.response({ (result) in
         switch result {
-        case let .success(data):
+        case .success(let data):
             print(data.count)
-        case let .error(error):
+        case .error(let error):
             print(error.localizedDescription)
         }
-    }
-}
-
-// GET Model
-func getModel() {
-    Just.get(myRepo)?.responseObject({ (result: Result<[Repo]>) in
+    })
+    
+    Just.request(myRepo, method: .get)?.responseObject({ (result: Result<[Repo]>) in
         switch result {
         case let .success(repos):
-            repos[0..<10].forEach({ (r) in
+            repos[0..<4].forEach({ (r) in
                 print(r)
             })
         case let .error(error):
@@ -66,26 +62,6 @@ func getModel() {
     })
 }
 
-func post() {
-    let url = "http://mockbin.com/request"
-    Just.post(url, jsonBody: ["foo": "bar"])?.response { (res) in
-        switch res {
-        case .success(let data):
-            print(data.count)
-        case .error(let error):
-            print(error)
-        }
-    }
-}
-
-func configuration() {
-    Just.get(myRepo, configurationBlock: { (request: URLRequest) -> URLRequest in
-        var newReq = request
-        newReq.cachePolicy = .returnCacheDataElseLoad
-        return newReq
-    })
-}
-
-get()
+examples()
 
 PlaygroundPage.current.needsIndefiniteExecution = true
