@@ -18,13 +18,12 @@ pod 'JustRequest'
 ```
 
 ### Manual
-Pick the code to your project.
+Just download the code.
 
 ## Requirements
 iOS 8+, OSX 10.10+, Swift 4
 
 ## Usage
-`Just` provides only 2 main interface for you:
 ### 1. request with `url`
 ```swift
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
@@ -34,7 +33,7 @@ public static func request(_ url: URL, method: HTTPMethod, parameters: Parameter
 ```swift
 public static func request(_ urlString: String, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
 ```
-Note: The second one might get deprecated in the future, as it's quite trivial to convert to `URL` yourself.
+*Note: The second one will get deprecated in the future, as it's quite trivial to convert to `URL` yourself.*
 
 ### To configure the default URLRequest
 Provide URLRequest configuration block:
@@ -107,6 +106,9 @@ GithubAPI.getUser(id: "123").request.responseObject{  (result: Result<[User]>) i
 ```
 
 *Note: It's important to explicitly specify `result: Result<[User]>` to help the compiler knows the model you are dealing with. With this, you can interact with `users` as `[User]`.*
+
+## Motivation
+Most apps use only interact with JSON API via simple `GET` and `POST`, so `Alamofire` can be an overkill. This URLSession wrapper should be enough.
 
 ## Contribution
 Pull requests are welcomed!
