@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/cocoapods/l/JustRequest.svg?style=flat)](http://cocoapods.org/pods/JustRequest)
 [![Platform](https://img.shields.io/cocoapods/p/JustRequest.svg?style=flat)](http://cocoapods.org/pods/JustRequest)
 
-A lightweight URLSession wrapper just for GET and POST.
+A lightweight URLSession wrapper just for GET and POST, because that's all we care about.
 
 ## Features
 - [x] Lightweight, < 150 lines of code
