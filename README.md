@@ -37,7 +37,8 @@ public static func request(_ urlString: String, method: HTTPMethod, parameters: 
 ```
 *Note: The second one will get deprecated in the future, as it's quite trivial to convert to `URL` yourself.*
 
-With these two APIs you will get a `Request` instance. Then you can **actually fire that request** by calling `request.responseData { ... }` (or `request.responseObject { ... }` using `Decodable`.)
+### To actually fires a request
+With these two APIs you will get a `Request` instance, but no request is fired yet. Like `Alamofire`, you can fire that request by calling `request.responseData { ... }` (or `request.responseObject { ... }` using `Decodable`.)
 
 ### To configure the default URLRequest
 Provide URLRequest configuration block:
