@@ -116,13 +116,13 @@ GithubAPI.getUser(id: "123").request.responseObject{  (result: Result<[User]>) i
 Most apps use only interact with JSON API via simple `GET` and `POST`, so `Alamofire` can be an overkill. URLSession should be enough. "But I can't remember how to use `URLSession`!", then `Just` is for you.
 
 ## Contribution
-Pull requests are welcomed!
+Pull requests are welcomed! No tests yet...
 
 ## FAQ
 ### Is this for me?
-`Just` is very limited. If you need a finer-grain control or performance optimization, you should use other libraries. This library is really for those who want to use simple `URLSession` but never remember how to use it. Also, check the code if it's what you need.
+`Just` is very limited. If you need a finer-grain control or performance optimization, you should use other libraries. This library is really for those who want to use simple `URLSession` but never remember how to use it. Please also note that there is no tests yet...
 
-Or you could fork this and customize it to your needs.
+You could fork this and customize it to your needs.
 
 ### Is this related to [JustHTTP](https://github.com/JustHTTP/Just)?
 Totally unrelated. Actually, I found them out the moment I finish coding this. A library with the same name doing almost the same thing! Still, checking the docs and you will notice quickly that our goals are very different.
