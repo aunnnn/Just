@@ -25,6 +25,7 @@ iOS 8+, OSX 10.10+, Swift 4
 
 ## Usage
 Don't forget to `import JustRequest`.
+`Just` only has two APIs:
 ### 1. request with `url`
 ```swift
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
@@ -35,6 +36,9 @@ public static func request(_ url: URL, method: HTTPMethod, parameters: Parameter
 public static func request(_ urlString: String, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
 ```
 *Note: The second one will get deprecated in the future, as it's quite trivial to convert to `URL` yourself.*
+
+### To actually fires a request
+With these two APIs you will get a `Request` instance, but no request is fired yet. Like `Alamofire`, you can fire that request by calling `request.responseData { ... }` (or `request.responseObject { ... }` using `Decodable`.)
 
 ### To configure the default URLRequest
 Provide URLRequest configuration block:
@@ -109,16 +113,16 @@ GithubAPI.getUser(id: "123").request.responseObject{  (result: Result<[User]>) i
 *Note: It's important to explicitly specify `result: Result<[User]>` to help the compiler knows the model you are dealing with. With this, you can interact with `users` as `[User]`.*
 
 ## Motivation
-Most apps use only interact with JSON API via simple `GET` and `POST`, so `Alamofire` can be an overkill. This URLSession wrapper should be enough.
+Most apps use only interact with JSON API via simple `GET` and `POST`, so `Alamofire` can be an overkill. URLSession should be enough. "But I can't remember how to use `URLSession`!", then `Just` is for you.
 
 ## Contribution
-Pull requests are welcomed!
+Pull requests are welcomed! No tests yet...
 
 ## FAQ
 ### Is this for me?
-`Just` is very limited. If you need a finer-grain control over how to make request, cache policy, etc., you should just use other libraries. Also, check the code if it's what you need.
+`Just` is very limited. If you need a finer-grain control or performance optimization, you should use other libraries. This library is really for those who want to use simple `URLSession` but never remember how to use it. Please also note that there is no tests yet...
 
-I suggest you to fork this and do whatever you want with it.
+You could fork this and customize it to your needs.
 
 ### Is this related to [JustHTTP](https://github.com/JustHTTP/Just)?
 Totally unrelated. Actually, I found them out the moment I finish coding this. A library with the same name doing almost the same thing! Still, checking the docs and you will notice quickly that our goals are very different.
