@@ -30,4 +30,4 @@ deployment:
 
 
 script:
-  - xcodebuild -project Just.xcodeproj -scheme Just-iOS -sdk iphoneos11.3 build test | xcpretty
+  - xcodebuild -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.3' -project Just.xcodeproj -scheme Just-iOS test
