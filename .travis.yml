@@ -27,3 +27,7 @@ deployment:
     tag: /.*/
     commands:
       - pod trunk push
+
+
+script:
+  - xcodebuild -project Just.xcodeproj -scheme Just-iOS -sdk iphoneos11.3 build test | xcpretty
