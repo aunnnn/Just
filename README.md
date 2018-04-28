@@ -7,7 +7,7 @@
 A lightweight URLSession wrapper just for GET and POST, because that's all we care about.
 
 ## Features
-- [x] Lightweight, < 150 lines of code
+- [x] Lightweight
 - [x] GET
 - [x] POST (json or urlencoded)
 - [x] Decode JSON response to `T` using the new `Codable` ✨
