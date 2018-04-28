@@ -90,7 +90,7 @@ class JustRequestTests: XCTestCase {
                                                      "header1": "1"])
 
         // Make order of params irrelevant
-        let targetBody = "body1=1&bosdy2=2".split(separator: "&").sorted()
+        let targetBody = "body1=1&body2=2".split(separator: "&").sorted()
         let actualBody = String(data: request.httpBody!, encoding: .utf8)!.split(separator: "&").sorted()
         XCTAssertEqual(actualBody, targetBody)
     }
