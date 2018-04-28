@@ -50,30 +50,36 @@ public struct Request {
     
     public func asURLRequest() -> URLRequest {
         var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = headers
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        if case let .post(encoding) = method {
+            switch encoding {
+            case .json:
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            case .url:
+                request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            }
+        }
         if let params = parameters {
             switch method {
             case .post(let encoding):
                 switch encoding {
                 case .json:
                     request.httpBody = try? JSONSerialization.data(withJSONObject: params)
-                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 case .url:
                     request.httpBody = params.map { (tuple) -> String in
                         return "\(tuple.key)=\(self.percentEscapeString(string: "\(tuple.value)"))"
                         }.joined(separator: "&").data(using: .utf8, allowLossyConversion: true)
-                    request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 }
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
             case .get:
                 var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
                 components.queryItems = params.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
                 components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
                 let urlWithQueries = components.url!
-                request = URLRequest(url: urlWithQueries)
+                request.url = urlWithQueries
             }
         }
         request.httpMethod = method.string
-        request.allHTTPHeaderFields = headers
         if let configured = configurationBlock {
             return configured(request)
         } else {
