@@ -22,12 +22,19 @@ machine:
   xcode:
     version: "9.3"
 
-deployment:
-  release:
-    tag: /.*/
-    commands:
-      - pod trunk push
+deploy:
+  provider: script
+  script: ./scripts/push.sh
+  on:
+    tag: true
 
 
 script:
   - xcodebuild -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.3' -project Just.xcodeproj -scheme Just-iOS test
+
+notifications:
+  email:
+    recipients:
+      - aun.wirawit@gmail.com
+    on_success: never
+    on_failure: always
