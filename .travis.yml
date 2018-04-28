@@ -24,7 +24,7 @@ machine:
 
 deploy:
   provider: script
-  script: scripts/push.sh
+  script: sh scripts/push.sh
   on:
     tag: true
     branch: master
