@@ -27,7 +27,7 @@ deploy:
   script: sh scripts/push.sh
   on:
     tag: true
-    branch: master
+    branch: release
 
 
 script:
