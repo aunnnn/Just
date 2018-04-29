@@ -25,18 +25,13 @@ Just download the code.
 iOS 8+, OSX 10.10+, Swift 4
 
 ## Usage
-Don't forget to `import JustRequest`.
-`Just` only has two APIs:
-### 1. request with `url`
+
+`Just` only has one API:
 ```swift
 public static func request(_ url: URL, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
 ```
 
-### 2. request with `urlString`
-```swift
-public static func request(_ urlString: String, method: HTTPMethod, parameters: Parameters?=nil, headers: HTTPHeaders?=nil, configurationBlock: URLRequestConfigurationBlock?=nil) -> Request
-```
-*Note: The second one will get deprecated in the future, as it's quite trivial to convert to `URL` yourself.*
+*Don't forget to `import JustRequest`.*
 
 ### To actually fires a request
 With these two APIs you will get a `Request` instance, but no request is fired yet. Like `Alamofire`, you can fire that request by calling `request.responseData { ... }` (or `request.responseObject { ... }` using `Decodable`.)
@@ -44,7 +39,7 @@ With these two APIs you will get a `Request` instance, but no request is fired y
 ### To configure the default URLRequest
 Provide URLRequest configuration block:
 ```swift
-Just.request("https://api.github.com/users/aunnnn/repos", method: .get, configurationBlock: { (request: URLRequest) -> URLRequest in
+Just.request(URL(string: "https://api.github.com/users/aunnnn/repos")!, method: .get, configurationBlock: { (request: URLRequest) -> URLRequest in
     var newReq = request
     newReq.cachePolicy = .returnCacheDataElseLoad
     return newReq
