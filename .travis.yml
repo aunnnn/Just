@@ -32,7 +32,8 @@ deploy:
 
 
 script:
-  - xcodebuild -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.3' -project Just.xcodeproj -scheme Just-iOS test
+  - set -o pipefail
+  - xcodebuild -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.3' -project Just.xcodeproj -scheme Just-iOS test | xcpretty
 
 notifications:
   email:
