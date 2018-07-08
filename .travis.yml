@@ -19,6 +19,9 @@ before_install:
   - gem install xcpretty -N
   - brew update
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 machine:
   xcode:
     version: "9.3"
@@ -33,7 +36,7 @@ deploy:
 
 script:
   - set -o pipefail
-  - xcodebuild -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.3' -project Just.xcodeproj -scheme Just-iOS test | xcpretty
+  - xcodebuild -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.3' -project Just.xcodeproj -scheme Just-iOS build test | xcpretty
 
 notifications:
   email:
